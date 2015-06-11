@@ -29,6 +29,11 @@ namespace TidyManaged
 	public enum DocTypeMode
 	{
 		/// <summary>
+		/// &lt;!DOCTYPE html&gt;
+		/// </summary>
+		Html5,
+
+		/// <summary>
 		/// Omit DOCTYPE altogether.
 		/// </summary>
 		Omit,
@@ -49,7 +54,7 @@ namespace TidyManaged
 		Loose,
 
 		/// <summary>
-		/// User-specified doctype.
+		/// Set DOCTYPE FPI explicitly.
 		/// </summary>
 		User
 	}

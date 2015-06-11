@@ -47,11 +47,14 @@ namespace TidyManaged.Interop
 		TidyOutFile,         /*< File name to write markup to */
 		TidyWriteBack,       /*< If true then output tidied markup */
 		TidyShowMarkup,      /*< If false, normal output is suppressed */
+		TidyShowInfo,        /*< If true, info-level messages are shown */
 		TidyShowWarnings,    /*< However errors are always shown */
 		TidyQuiet,           /*< No 'Parsing X', guessed DTD or summary */
 		TidyIndentContent,   /*< Indent content of appropriate tags */
 		/*< "auto" does text/block level content indentation */
-		TidyHideEndTags,     /*< Suppress optional end tags */
+		TidyCoerceEndTags,   /*< Coerce end tags from start tags where probably intended */
+		TidyOmitOptionalTags,/*< Suppress optional start tags and end tags */
+		TidyHideEndTags,     /*< Legacy name for TidyOmitOptionalTags */
 		TidyXmlTags,         /*< Treat input as XML */
 		TidyXmlOut,          /*< Create output as XML */
 		TidyXhtmlOut,        /*< Output extensible HTML */
@@ -62,9 +65,11 @@ namespace TidyManaged.Interop
 		TidyUpperCaseAttrs,  /*< Output attributes in upper not lower case */
 		TidyMakeBare,        /*< Make bare HTML: remove Microsoft cruft */
 		TidyMakeClean,       /*< Replace presentational clutter by style rules */
+		TidyGDocClean,       /*< Clean up HTML exported from Google Docs */
 		TidyLogicalEmphasis, /*< Replace i by em and b by strong */
 		TidyDropPropAttrs,   /*< Discard proprietary attributes */
 		TidyDropFontTags,    /*< Discard presentation tags */
+		TidyDropEmptyElems,  /*< Discard empty elements */
 		TidyDropEmptyParas,  /*< Discard empty p elements */
 		TidyFixComments,     /*< Fix comments with adjacent hyphens */
 		TidyBreakBeforeBR,   /*< Output newline before <br> or not? */
@@ -132,12 +137,14 @@ namespace TidyManaged.Interop
 #else
 		TidyPunctWrapNotUsed,
 #endif
+		TidyMergeEmphasis,   /*< Merge nested B and I elements */
 		TidyMergeDivs,       /*< Merge multiple DIVs */
 		TidyDecorateInferredUL,  /*< Mark inferred UL elements with no indent CSS */
 		TidyPreserveEntities,    /*< Preserve entities */
 		TidySortAttributes,      /*< Sort attributes */
 		TidyMergeSpans,       /*< Merge multiple SPANs */
 		TidyAnchorAsName,    /*< Define anchors as name attributes */
+		TidyPPrintTabs,      /*< Indent using tabs istead of spaces */
 		N_TIDY_OPTIONS       /*< Must be last */
 	}
 }
