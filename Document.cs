@@ -66,6 +66,7 @@ namespace TidyManaged
 		IntPtr handle;
 		Stream stream;
 		string htmlString;
+		TidyBuffer errorBuffer;
 		bool fromString;
 		bool disposed;
 		bool cleaned;
@@ -862,6 +863,21 @@ namespace TidyManaged
 		#region Miscellaneous Options
 
 		/// <summary>
+		/// Gets Tidy error output.
+		/// </summary>
+		public string ErrorBuffer
+		{
+			get
+			{
+				if (!cleaned)
+				{
+					return string.Empty;
+				}
+				return Marshal.PtrToStringAnsi(errorBuffer.bp);
+			}
+		}
+
+		/// <summary>
 		/// [error-file] Gets or sets the error file Tidy uses for errors and warnings. Normally errors and warnings are output to "stderr". Defaults to null.
 		/// </summary>
 		public string ErrorFile
@@ -944,6 +960,9 @@ namespace TidyManaged
 		/// </summary>
 		public void CleanAndRepair()
 		{
+			errorBuffer = new TidyBuffer();
+			PInvoke.tidySetErrorBuffer(this.handle, ref errorBuffer);
+
 			if (fromString)
 			{
 				EncodingType tempEnc = this.InputCharacterEncoding;

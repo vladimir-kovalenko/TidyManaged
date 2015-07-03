@@ -76,6 +76,9 @@ namespace TidyManaged.Interop
 		[DllImport("tidy5.dll")]
 		internal static extern int tidySaveSink(IntPtr tdoc, ref TidyOutputSink sink);
 
+        [DllImport("tidy5.dll")]
+        internal static extern int tidySetErrorBuffer(IntPtr tdoc, ref TidyBuffer errbuf);
+
 		internal static string tidyOptGetValueString(IntPtr tdoc, TidyOptionId optId)
 		{
 			return Marshal.PtrToStringAnsi(tidyOptGetValue(tdoc, optId));
